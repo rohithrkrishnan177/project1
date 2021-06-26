@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">EDIT DETAILS<small></small></h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              {% for da in data %}
+              <form role="form" id="quickForm" method="POST"   action="{% url 'edituser'  dataid=da.id  %}" >
+                {% csrf_token %}
+   <div class="card-body">
+
+
+                    <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" value="{{da.name}}">
+                  </div>
+                      <div class="form-group">
+                    <label for="place">Place</label>
+                    <input type="Place" name="place" class="form-control" id="place" placeholder="Enter Place" value="{{da.place}}">
+                  </div>
+
+                    <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" value="{{da.email}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Enter Username" value="{{da.username}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" name="password" class="form-control" id="password" placeholder="Password" value="{{da.password}}">
+                  </div>
+
+
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+              </form>
+                {% endfor %}
+            </div>
+            <!-- /.card -->
+            </div>
+
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+{% endblock %}
